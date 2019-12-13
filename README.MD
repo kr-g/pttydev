@@ -13,6 +13,11 @@ Tested on ESP32, pyserial and MicroPython WebRepl
 Alpha state, 
 The websocket device is __experimental__ and will fail when sending longer strings to micropython 
 
+## Installation
+
+pttydev can be installed with pip from here [pttydev](https://pypi.org/project/pttydev/)
+
+
 ## Code
 
 some code for opening micropython raw-repl
