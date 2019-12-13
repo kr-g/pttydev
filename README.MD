@@ -8,6 +8,11 @@ Using a pptydev enables your code to read input from a serial device or via webs
 
 Tested on ESP32, pyserial and MicroPython WebRepl
 
+## Related project
+
+[mpycntrl](https://github.com/kr-g/mpycntrl)
+
+
 ## Development status
 
 Alpha state, 
