@@ -117,8 +117,6 @@ some code for opening micropython raw-repl
                         #get_pttyopen,
                         get_pttywsopen,                    
                         
-                        #thrd_reader=_the_thread_reader,
-                        
                         timeout=0.35,
                         block_size=512,
                         reconnect_delay=1,
