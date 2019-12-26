@@ -8,10 +8,20 @@ Using a pptydev enables your code to read input from a serial device or via webs
 
 Tested on ESP32, pyserial and MicroPython WebRepl
 
+## Related project
+
+[mpycntrl](https://github.com/kr-g/mpycntrl)
+
+
 ## Development status
 
 Alpha state, 
 The websocket device is __experimental__ and will fail when sending longer strings to micropython 
+
+## Installation
+
+pttydev can be installed with pip from here [pttydev](https://pypi.org/project/pttydev/)
+
 
 ## Code
 
@@ -120,8 +130,6 @@ some code for opening micropython raw-repl
                         #get_pttyopen,
                         get_pttywsopen,                    
                         #get_pttywsappopen,
-                        
-                        #thrd_reader=_the_thread_reader,
                         
                         timeout=0.35,
                         block_size=512,
