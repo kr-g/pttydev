@@ -4,6 +4,7 @@ from pttydev import *
 try:
     from dev_serial import *
     from dev_ws import *
+    from dev_wsapp import *
 
 except:
     pass
@@ -26,7 +27,10 @@ def get_pttyopen():
                     timeout=timeout)
 
 def get_pttywsopen():    
-    return pttywsopen("ws://your-ip:8266","your-password")
+    return pttywsopen("ws://192.168.178.21:8266","123456")
+
+def get_pttywsappopen():    
+    return pttywsappopen("ws://192.168.178.21:8266","123456", debug=False)
 
 
 # the sample code
@@ -51,7 +55,7 @@ def enter_raw_repl(ptty,timeout=1):
         r = ptty.read(1)
         if r == b'>':
             return True
-    raise Exception("could not eneter raw-repl")
+    raise Exception("could not enter raw-repl")
 
 def skipOK(ptty,timeout=1):
     print("skipOK")
@@ -95,8 +99,9 @@ def sample():
     
     tty = PseudoTTY(
                     # uncomment the part you want to test
-                    #get_pttyopen,
-                    get_pttywsopen,                    
+                    get_pttyopen,
+                    #get_pttywsopen,
+                    #get_pttywsappopen,
                     
                     #thrd_reader=_the_thread_reader,
                     
@@ -164,6 +169,8 @@ def sample():
                     _ids["unique_id"] = ubinascii.hexlify( machine.unique_id() )
                     _ids["platform"] = sys.platform
                     _ids["version"] = sys.version
+                    #########################
+                    ###
                     print( json.dumps( _ids ) )
                 """,echocmd=True)
             print( r )

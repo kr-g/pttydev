@@ -38,7 +38,7 @@ class _WebSocket_Dev():
     def write(self,buf):
         #print("dev write", buf )
         wb = self.ws.send(buf)
-        #print("dev write", wb, len(buf) )
+        print("dev write", wb, len(buf) )
         return wb
     
     def flush(self):
@@ -55,7 +55,7 @@ def pttywsopen(url,password,timeout=3):
     #websocket.enableTrace(False)
    
     ws = create_connection(url,timeout=timeout,
-                           #sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),)
+                           sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 0),)
                                    )        
     r =  ws.recv()
     print("dev got", r )
