@@ -23,6 +23,7 @@ some code for opening micropython raw-repl
     try:
         from dev_serial import *
         from dev_ws import *
+        from dev_wsapp import *
 
     except:
         pass
@@ -47,6 +48,8 @@ some code for opening micropython raw-repl
     def get_pttywsopen():
         return pttywsopen("ws://your-ip:8266","your-password")
 
+    def get_pttywsappopen():    
+        return pttywsappopen("ws://your-ip:8266","your-password")
 
     # the sample code
 
@@ -116,6 +119,7 @@ some code for opening micropython raw-repl
                         # uncomment the part you want to test
                         #get_pttyopen,
                         get_pttywsopen,                    
+                        #get_pttywsappopen,
                         
                         #thrd_reader=_the_thread_reader,
                         
