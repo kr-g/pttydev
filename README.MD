@@ -16,7 +16,12 @@ Tested on ESP32, pyserial and MicroPython WebRepl
 ## Development status
 
 Alpha state, 
-The websocket device is __experimental__ and will fail when sending longer strings to micropython 
+The websocket device is __experimental__ and will fail when sending longer strings to micropython. 
+
+### Limitation
+
+there is a known bug with [WebREPL](https://github.com/kr-g/pttydev)
+
 
 ## Installation
 
