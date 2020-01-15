@@ -20,7 +20,7 @@ The websocket device is __experimental__ and will fail when sending longer strin
 
 ### Limitation
 
-there is a known bug with [WebREPL](https://github.com/kr-g/pttydev)
+there is a known bug with [WebREPL](https://github.com/micropython/micropython/issues/2497)
 
 
 ## Installation
