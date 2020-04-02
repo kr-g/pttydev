@@ -19,6 +19,12 @@ Alpha state,
 
 in case of unexpected behaviour change timeouts for your board
 
+
+### Limitation
+
+there is a known bug with [WebREPL](https://github.com/micropython/micropython/issues/2497)
+
+
 ## Installation
 
 pttydev can be installed with pip from here [pttydev](https://pypi.org/project/pttydev/)
