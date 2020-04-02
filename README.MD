@@ -2,7 +2,7 @@
 # PTTYDev - Pseudo TTY Device
 
 PTTYDev provides a common interface and enhanced timeout and automatic reconnection handling.
-Using a pptydev enables your code to read input from a serial device or via websocket.
+Using a pttydev enables your code to read / write a serial device or websocket.
 
 ## Platform
 
@@ -22,6 +22,7 @@ in case of unexpected behaviour change timeouts for your board
 
 ### Limitation
 
+deprecated hint: 
 there is a known bug with [WebREPL](https://github.com/micropython/micropython/issues/2497)
 
 
