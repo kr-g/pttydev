@@ -26,12 +26,30 @@ def get_pttyopen():
                     bytesize=bytesize, parity=parity, stopbits=stopbits,
                     timeout=timeout)
 
-def get_pttywsopen():    
-    return pttywsopen("ws://192.168.178.21:8266","123456")
+# put here the board IP adr
+IP_ADR = "192.168.178.30"
+IP_ADR = "192.168.178.26"
 
+IP_PORT = 8266
+IP_PASS = "123456"
+
+def get_pttywsopen():
+    # check this !!!
+    # ESP32 delay 0.3-0.5
+    # ESP8266 delay 0.01
+    delay = 0.3
+    return pttywsopen( f"ws://{IP_ADR}:{IP_PORT}", IP_PASS, write_delay=delay )
+
+##
+## dont use this one !!!
+##
+## deprecated, will be removed soon
+##
 def get_pttywsappopen():    
-    return pttywsappopen("ws://192.168.178.21:8266","123456", debug=False)
-
+    return pttywsappopen( f"ws://{IP_ADR}:{IP_PORT}", IP_PASS, debug=False)
+##
+##
+##
 
 # the sample code
 
@@ -99,8 +117,8 @@ def sample():
     
     tty = PseudoTTY(
                     # uncomment the part you want to test
-                    get_pttyopen,
-                    #get_pttywsopen,
+                    #get_pttyopen,
+                    get_pttywsopen,
                     #get_pttywsappopen,
                     
                     #thrd_reader=_the_thread_reader,
@@ -170,10 +188,16 @@ def sample():
                     _ids["platform"] = sys.platform
                     _ids["version"] = sys.version
                     #########################
+                    #########################
+                    ## long cmd content
+                    #########################
+                    #########################
                     ###
                     print( json.dumps( _ids ) )
                 """,echocmd=True)
             print( r )
+            
+            #return
 
             try:
                 r = send_cmd(ptty, """

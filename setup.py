@@ -5,7 +5,7 @@ with open("README.MD", "r") as fh:
 
 setuptools.setup(
     name="pttydev", 
-    version="v0.0.3",
+    version="v0.0.4",
     author="k.r. goger",
     author_email="k.r.goger+pttydev@gmail.com",
     description="TTYDev - Pseudo TTY Device",

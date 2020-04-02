@@ -4,14 +4,16 @@
 
 from websocket import *
 import socket
+import time
 
     
 class _WebSocket_Dev():
     
     """context wrapper for websocket device"""
     
-    def __init__(self,ws):
+    def __init__(self,ws,write_delay):
         self.ws = ws
+        self.write_delay = write_delay
         
     def __enter__(self):
         return self
@@ -37,9 +39,18 @@ class _WebSocket_Dev():
         
     def write(self,buf):
         #print("dev write", buf )
-        wb = self.ws.send(buf)
-        print("dev write", wb, len(buf) )
-        return wb
+        
+        wbtotal = 0
+        
+        for i in range(0, len(buf), 255):
+            bslice = buf[i:min(i + 255, len(buf))]
+            wb = self.ws.send(bslice)
+            wbtotal += wb
+            print("dev write slice", wb, len(bslice) )
+            time.sleep(self.write_delay)
+        
+        print("dev write total", wbtotal, len(buf) )
+        return wbtotal
     
     def flush(self):
         import os
@@ -49,7 +60,7 @@ class _WebSocket_Dev():
    
 
 
-def pttywsopen(url,password,timeout=3):
+def pttywsopen(url,password,timeout=3,write_delay=0.5):
     
     # a open function is required to reconnect properly the device in case of error
     #websocket.enableTrace(False)
@@ -64,7 +75,7 @@ def pttywsopen(url,password,timeout=3):
     r = ws.recv()
     print("dev got", r )
     if r.find("WebREPL connected")>=0:
-        ptty = _WebSocket_Dev(ws)
+        ptty = _WebSocket_Dev(ws,write_delay)
         return ptty
     
     raise Exception( "wrong password, additional information", r)
